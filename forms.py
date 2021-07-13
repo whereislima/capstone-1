@@ -46,8 +46,9 @@ class ProfileForm(FlaskForm):
     skin_concerns = StringField("skin concerns", validators=[InputRequired()])
 
 class RoutineForm(FlaskForm):
-    time_of_day = SelectField()
-    step = NumberField()
-    type = SelectField()
+    time_of_day = SelectField("time of day", validators=[InputRequired()], choices=[('morning', 'morning'), ('evening', 'evening')])
+    frequency = SelectField("frequency", validators=[InputRequired()], choices = [('daily', 'daily'), ('weekly' 'weekly'), ('monthly', 'monthly')])
+    step = NumberField("step", validators=[InputRequired()])
+    type = SelectField("type", validators=[InputRequired()], choices=[('cleanser', 'cleanser'), ('essence', 'essence'), ('toner', 'toner'), ('serum', 'serum'), ('eyecream', 'eye cream'), ('moisturizer', 'moisturizer'), ('oil', 'oil'), ('active', 'active'), ('treatment', 'treatment'), ('mask', 'mask')])
 
 
