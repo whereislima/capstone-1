@@ -4,41 +4,41 @@ from flask_wtf import FlaskForm
 
 
 
-class RegisterForm(FlaskForm):
-    """User registration form."""
+# class RegisterForm(FlaskForm):
+#     """User registration form."""
 
-    username = StringField(
-        "Username",
-        validators=[InputRequired(), Length(min=1, max=20)],
-    )
-    password = PasswordField(
-        "Password",
-        validators=[InputRequired(), Length(min=6, max=55)],
-    )
-    email = StringField(
-        "Email",
-        validators=[InputRequired(), Email(), Length(max=50)],
-    )
-    first_name = StringField(
-        "First Name",
-        validators=[InputRequired(), Length(max=30)],
-    )
-    last_name = StringField(
-        "Last Name",
-        validators=[InputRequired(), Length(max=30)],
-    )
+#     username = StringField(
+#         "Username",
+#         validators=[InputRequired(), Length(min=1, max=20)],
+#     )
+#     password = PasswordField(
+#         "Password",
+#         validators=[InputRequired(), Length(min=6, max=55)],
+#     )
+#     email = StringField(
+#         "Email",
+#         validators=[InputRequired(), Email(), Length(max=50)],
+#     )
+#     first_name = StringField(
+#         "First Name",
+#         validators=[InputRequired(), Length(max=30)],
+#     )
+#     last_name = StringField(
+#         "Last Name",
+#         validators=[InputRequired(), Length(max=30)],
+#     )
 
-class LoginForm(FlaskForm):
-    """Login form."""
+# class LoginForm(FlaskForm):
+#     """Login form."""
 
-    username = StringField(
-        "Username",
-        validators=[InputRequired(), Length(min=1, max=20)],
-    )
-    password = PasswordField(
-        "Password",
-        validators=[InputRequired(), Length(min=6, max=55)],
-    )
+#     username = StringField(
+#         "Username",
+#         validators=[InputRequired(), Length(min=1, max=20)],
+#     )
+#     password = PasswordField(
+#         "Password",
+#         validators=[InputRequired(), Length(min=6, max=55)],
+#     )
 
 class ProfileForm(FlaskForm):
     profile_image = FileField("profile image", Optional())

@@ -1,12 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends 'base.html' %}
 
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>better skin</title>
-</head>
+{% block title %}Home Page{% endblock %}
+
+{% block content %}
 
 <body>
   <section id="profile">
@@ -77,5 +73,5 @@
   <script src="https://unpkg.com/axios/dist/axios.js"></script>
   <script src="/static/app.js"></script>
 </body>
+{% endblock %}
 
-</html>
