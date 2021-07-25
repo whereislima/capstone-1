@@ -3,7 +3,6 @@ from wtforms.validators import InputRequired, Length, Optional, Email
 from flask_wtf import FlaskForm
 
 
-
 # class RegisterForm(FlaskForm):
 #     """User registration form."""
 
@@ -45,10 +44,18 @@ class ProfileForm(FlaskForm):
     age = NumberField("age", validators=[InputRequired()])
     skin_concerns = StringField("skin concerns", validators=[InputRequired()])
 
-class RoutineForm(FlaskForm):
-    time_of_day = SelectField("time of day", validators=[InputRequired()], choices=[('morning', 'morning'), ('evening', 'evening')])
-    frequency = SelectField("frequency", validators=[InputRequired()], choices = [('daily', 'daily'), ('weekly' 'weekly'), ('monthly', 'monthly')])
-    step = NumberField("step", validators=[InputRequired()])
-    type = SelectField("type", validators=[InputRequired()], choices=[('cleanser', 'cleanser'), ('essence', 'essence'), ('toner', 'toner'), ('serum', 'serum'), ('eyecream', 'eye cream'), ('moisturizer', 'moisturizer'), ('oil', 'oil'), ('active', 'active'), ('treatment', 'treatment'), ('mask', 'mask')])
+# information should come from the eBay API
+class ProductForm(FlaskForm):
+    name = TextField()
+    price = NumberField()
+    image = FileField()
 
+class RoutineForm(FlaskForm):
+    time_of_day = SelectField("time of day", validators=[InputRequired()], choices=[
+                              ('morning', 'morning'), ('evening', 'evening')])
+    frequency = SelectField("frequency", validators=[InputRequired()], choices=[
+                            ('daily', 'daily'), ('weekly' 'weekly'), ('monthly', 'monthly')])
+    step = NumberField("step", validators=[InputRequired()])
+    type = SelectField("type", validators=[InputRequired()], choices=[('cleanser', 'cleanser'), ('essence', 'essence'), ('toner', 'toner'), ('serum', 'serum'), (
+        'eyecream', 'eye cream'), ('moisturizer', 'moisturizer'), ('oil', 'oil'), ('active', 'active'), ('treatment', 'treatment'), ('mask', 'mask')])
 

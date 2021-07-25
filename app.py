@@ -1,6 +1,9 @@
 from flask import Flask, request, jsonify, render_template
-import requests
+
+from flask_debugtoolbar import DebugToolbarExtension
+
 from models import db, connect_db, Product
+from forms import ProfileForm, RoutineForm, ProductForm
 
 API_BASE_URL = "https://developer.ebay.com/api-docs/buy/browse/resources/item_summary/methods/search?q=skincare"
 
@@ -11,9 +14,12 @@ app = Flask(__name__)
 
 app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql:///products'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-app.config['SECRET_KEY'] = "good_skin"
+app.config['SECRET_KEY'] = "puri-puri"
 
 connect_db(app)
+db.create_all()
+
+toolbar = DebugToolbarExtension(app)
 
 
 @app.route("/")
@@ -21,3 +27,25 @@ def root():
     """Render homepage."""
 
     return render_template("index.html")
+
+@app.route("/profile", methods=["GET", "POST"])
+def add_profile():
+
+    form = ProfileForm()
+
+    return render_template("profile_form.html", form=form)
+
+@app.route("/product", methods=["GET", "POST"])
+def add_routine():
+
+    form = ProductForm()
+
+    return render_template("product_form.html", form=form)
+
+@app.route("/routine", methods=["GET", "POST"])
+def add_routine():
+
+    form = RoutineForm()
+
+    return render_template("routine_form.html", form=form)
+
