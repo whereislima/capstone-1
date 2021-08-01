@@ -1,13 +1,23 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>{% block title %}TITLE GOES HERE{% endblock %}</title>
+  <title>{% block title %}better skin{% endblock %}</title>
   <link rel="stylesheet" href="/static/css/styles.css">
-  <script src="http://unpkg.com/jquery"></script>
+  <!-- CSS only -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 </head>
 <body>
-  <h1>Our Site</h1>
+  <nav class="navbar navbar-dark bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">better skin</a>
+    </div>
+  </nav>
+ <div class="container-fluid">
   {% block content %}BODY CONTENT GOES HERE{% endblock %}
-  <footer>Copyright by better skin.</footer>
+</div>
+  <!-- <footer>Copyright by better skin.</footer> -->
+  <!-- JavaScript Bundle with Popper -->
+  <script src="http://unpkg.com/jquery"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </body>
 </html>

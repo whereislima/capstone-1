@@ -5,26 +5,36 @@ from flask_bcrypt import Bcrypt
 bcrypt = Bcrypt()
 db = SQLAlchemy()
 
+class Profile(db.Model):
+
+    __tablename__ = "profiles"
+
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    age = db.Column(db.Integer, nullable=False)
+    skin_type = db.Column(db.Text, nullable=False)
+    skin_concerns = db.Column(db.Text, nullable=False)
+
+
+class Product(db.Model):
+  
+    __tablename__ = "products"
+
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    name = db.Column(db.Text, nullable=False)
+    price = db.Column(db.Float)
+
+    routines = db.relationship("Routine")
 
 class Routine(db.Model):
 
     __tablename__ = "routines"
 
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    time_of_day = db.Column(db.Text, nullable=False)
-    products = db.relationship("Product")
-
-
-class Product(db.Model):
-
-    __tablename__ = "products"
-
-    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     name = db.Column(db.Text, nullable=False)
-    type = db.Column(db.Text, nullable=False)
-    price = db.Column()
-    image = db.Column()
-
+    time_of_day = db.Column(db.Text, nullable=False)
+    frequency = db.Column(db.Text, nullable=False)
+    
+    products = db.relationship("Product", secondary="steps")
 
 class Step(db.Model):
 

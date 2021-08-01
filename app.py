@@ -1,9 +1,9 @@
-from flask import Flask, request, jsonify, render_template
+from flask import Flask, request, jsonify, render_template, redirect
 
 from flask_debugtoolbar import DebugToolbarExtension
 
-from models import db, connect_db, Product
-from forms import ProfileForm, RoutineForm, ProductForm
+from models import db, connect_db, Product, Profile, Routine, Step
+from forms import ProfileForm, RoutineForm, ProductForm, StepForm
 
 API_BASE_URL = "https://developer.ebay.com/api-docs/buy/browse/resources/item_summary/methods/search?q=skincare"
 
@@ -12,40 +12,58 @@ access_token = "Bearer v^1.1#i^1#f^0#p^1#I^3#r^0#t^H4sIAAAAAAAAAOVYe2wURRi/6wsKF
 
 app = Flask(__name__)
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql:///products'
+# app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql:///betterskin'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SECRET_KEY'] = "puri-puri"
 
-connect_db(app)
-db.create_all()
+# connect_db(app)
+# db.create_all()
 
-toolbar = DebugToolbarExtension(app)
+# toolbar = DebugToolbarExtension(app)
 
 
 @app.route("/")
 def root():
     """Render homepage."""
 
+    # get profile
+    
     return render_template("index.html")
 
 @app.route("/profile", methods=["GET", "POST"])
 def add_profile():
 
     form = ProfileForm()
+    if form.validate_on_submit():
+        age = form.age.data
+        skin_type = form.skin_type.data
+        skin_concerns = form.skin_concerns.data
 
-    return render_template("profile_form.html", form=form)
+        profile = Profile(age=age, skin_type=skin_type, skin_concerns=skin_concerns)
+        
+        # db.session.add(profile)
+        # db.session.commit()
+
+        return redirect("/")
+    else:
+        return render_template("profile_form.html", form=form)
+
+@app.route("/routine", methods=["GET", "POST"])
+def add_routine():
+    form = RoutineForm()
+
+    return render_template("routine_form.html", form=form)
 
 @app.route("/product", methods=["GET", "POST"])
-def add_routine():
+def add_product():
 
     form = ProductForm()
 
     return render_template("product_form.html", form=form)
 
-@app.route("/routine", methods=["GET", "POST"])
-def add_routine():
+@app.route("/step", methods=["GET", "POST"])
+def add_step():
 
-    form = RoutineForm()
+    form = StepForm()
 
-    return render_template("routine_form.html", form=form)
-
+    return render_template("step_form.html", form=form)

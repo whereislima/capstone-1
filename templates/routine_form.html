@@ -6,6 +6,7 @@
 
 <body>
   <h1>New Routine</h1>
+
   <form method="POST">
     {{ form.hidden_tag() }}
     {% for field in form if field.widget.input_type != 'hidden'%}
@@ -18,8 +19,13 @@
       {% endfor %}
     </p>
     {% endfor %}
-    <button>Submit</button>
-  </form>
+    <p>
+    <a href="/step">
+    <button>Add steps to routine</button>
+    </a>
+  </p>
+  </form>  
+
 </body>
 
 {% endblock %}
