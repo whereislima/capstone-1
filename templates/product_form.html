@@ -5,21 +5,19 @@
 {% block content %}
 
 <body>
-  <h1>New Product</h1>
-  <form method="POST">
-    {{ form.hidden_tag() }}
-    {% for field in form if field.widget.input_type != 'hidden'%}
-    <p>
-      {{field.label}}
-      {{field}}
+  Search for product 
+ <form action="" id="product-search">
+   <input type="text" name="product">
+   <input type="submit" value="search">
+ </form>
 
-      {% for err in field.errors %}
-      {{err}}
-      {% endfor %}
-    </p>
-    {% endfor %}
-    <button>Submit</button>
-  </form>
+
+Products found
+list goes here
+  <ul id="products">
+
+  </ul>
+
 </body>
 
 {% endblock %}
