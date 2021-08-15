@@ -10,7 +10,7 @@ class Profile(db.Model):
     __tablename__ = "profiles"
 
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    age = db.Column(db.Integer, nullable=False)
+    age_range = db.Column(db.Text, nullable=False)
     skin_type = db.Column(db.Text, nullable=False)
     skin_concerns = db.Column(db.Text, nullable=False)
 
@@ -21,31 +21,25 @@ class Product(db.Model):
 
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     name = db.Column(db.Text, nullable=False)
-    price = db.Column(db.Float)
-
-    routines = db.relationship("Routine")
+    description = db.Column(db.Text, nullable=True)
 
 class Routine(db.Model):
 
     __tablename__ = "routines"
 
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    name = db.Column(db.Text, nullable=False)
+    name = db.Column(db.Text)
     time_of_day = db.Column(db.Text, nullable=False)
-    frequency = db.Column(db.Text, nullable=False)
-    
-    products = db.relationship("Product", secondary="steps")
+   
+    products = db.relationship("Product", backref="products")
 
-class Step(db.Model):
+class RoutineStep(db.Model):
 
-    __tablename__ = "steps"
+    __tablename__ = "routine_steps"
 
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    product_id = db.Column(db.Integer, db.ForeignKey(
-        "products.id"), nullable=False)
-    routine_id = db.Column(db.Integer, db.ForeignKey(
-        "routines.id"), nullable=False)
-
+    product_id = db.Column(db.Integer, db.ForeignKey("products.id"), nullable=False)
+    routine_id = db.Column(db.Integer, db.ForeignKey("routines.id"), nullable=False)
 
 def connect_db(app):
     """Connect to database."""

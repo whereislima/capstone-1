@@ -35,11 +35,11 @@ def add_profile():
 
     form = ProfileForm()
     if form.validate_on_submit():
-        age = form.age.data
+        age_range = form.age_range.data
         skin_type = form.skin_type.data
         skin_concerns = form.skin_concerns.data
 
-        profile = Profile(age=age, skin_type=skin_type, skin_concerns=skin_concerns)
+        profile = Profile(age_range=age_range, skin_type=skin_type, skin_concerns=skin_concerns)
         
         # db.session.add(profile)
         # db.session.commit()
@@ -61,9 +61,4 @@ def add_product():
 
     return render_template("product_form.html", form=form)
 
-@app.route("/step", methods=["GET", "POST"])
-def add_step():
 
-    form = StepForm()
-
-    return render_template("step_form.html", form=form)

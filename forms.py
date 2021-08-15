@@ -4,20 +4,16 @@ from flask_wtf import FlaskForm
 
 
 class ProfileForm(FlaskForm):
-    age = IntegerField("age", validators=[InputRequired()])
-    skin_type = SelectField("skin concerns", validators=[InputRequired()], choices=[('oily', 'oily'), ('dry', 'dry'), ('combination', 'combination')])
-    skin_concerns = SelectField("skin concerns", validators=[InputRequired()], choices=[('acne', 'acne'), ('wrinkles', 'wrinkles'), ('pigmentation', 'pigmentation')])
+    age_range = SelectField("generational age", validators=[InputRequired()], choices=[('genA', 'Alpha'), ('genZ', 'Zoomer'), ('genY', 'Millenial'), ('genX', 'GenX'), ('gen', 'Boomer')])
+    skin_type = SelectField("skin type", validators=[InputRequired()], choices=[('oily', 'oily'), ('dry', 'dry'), ('combination', 'combination')])
+    skin_concerns = SelectField("skin concerns", validators=[InputRequired()], choices=[('acne', 'acne breakouts'), ('aging', 'aging, wrinkles, fine lines'), ('pigmentation', 'pigmentation, sun damage'), ('sensitive', 'sensitive, dry, redness') ])
 
 # information should come from the eBay API
 class ProductForm(FlaskForm):
     search_term = StringField(("search term"), validators=[InputRequired()])
 
 class RoutineForm(FlaskForm):
-    name = StringField(("name of routine"), validators=[InputRequired()])
+    time_of_day = SelectField(("morning or evening"), validators=[InputRequired()], choices=[('morning', 'morning'), ('evening', 'evening')])
+    # add products
 
 
-class StepForm(FlaskForm):
-    number = IntegerField()
-    name = StringField()
-    description = StringField()
-    price = DecimalField()
