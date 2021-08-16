@@ -31,15 +31,15 @@ class Routine(db.Model):
     name = db.Column(db.Text)
     time_of_day = db.Column(db.Text, nullable=False)
    
-    products = db.relationship("Product", backref="products")
+    products = db.relationship("Product", secondary="routine_steps", backref="products")
 
 class RoutineStep(db.Model):
 
     __tablename__ = "routine_steps"
 
-    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    product_id = db.Column(db.Integer, db.ForeignKey("products.id"), nullable=False)
-    routine_id = db.Column(db.Integer, db.ForeignKey("routines.id"), nullable=False)
+    product_id = db.Column(db.Integer, db.ForeignKey("products.id"), primary_key=True)
+    routine_id = db.Column(db.Integer, db.ForeignKey("routines.id"), primary_key=True)
+    step = db.Column(db.Integer)
 
 def connect_db(app):
     """Connect to database."""
