@@ -2,8 +2,8 @@ from flask import Flask, request, jsonify, render_template, redirect
 
 from flask_debugtoolbar import DebugToolbarExtension
 
-from models import db, connect_db, Product, Profile, Routine, Step
-from forms import ProfileForm, RoutineForm, ProductForm, StepForm
+from models import db, connect_db, Product, Profile
+from forms import ProfileForm, RoutineForm, ProductForm
 
 API_BASE_URL = "https://developer.ebay.com/api-docs/buy/browse/resources/item_summary/methods/search?q=skincare"
 
@@ -54,10 +54,13 @@ def add_routine():
 
     return render_template("routine_form.html", form=form)
 
+
 @app.route("/product", methods=["GET", "POST"])
 def add_product():
 
     form = ProductForm()
+
+    # access db to list all products
 
     return render_template("product_form.html", form=form)
 

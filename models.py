@@ -15,16 +15,8 @@ class Profile(db.Model):
     skin_concerns = db.Column(db.Text, nullable=False)
 
 
-class Product(db.Model):
-  
-    __tablename__ = "products"
-
-    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    name = db.Column(db.Text, nullable=False)
-    description = db.Column(db.Text, nullable=True)
-
 class Routine(db.Model):
-
+  
     __tablename__ = "routines"
 
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
@@ -32,6 +24,14 @@ class Routine(db.Model):
     time_of_day = db.Column(db.Text, nullable=False)
    
     products = db.relationship("Product", secondary="routine_steps", backref="products")
+
+class Product(db.Model):
+  
+    __tablename__ = "products"
+
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    name = db.Column(db.Text, nullable=False)
+    description = db.Column(db.Text, nullable=True)
 
 class RoutineStep(db.Model):
 
