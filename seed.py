@@ -13,5 +13,5 @@ p6 = Product(name="brand retinol", description="active")
 p7 = Product(name="brand sunblock", description="sunscreen")
 p8 = Product(name="brand moisturizer", description="moisturizer")
 
-db.session.add_all([p1, p2, p3, p4, p5, p6, p7, p8, p9])
+db.session.add_all([p1, p2, p3, p4, p5, p6, p7, p8])
 db.session.commit()
