@@ -1,9 +1,9 @@
 from flask import Flask, request, jsonify, render_template, redirect
-
 from flask_debugtoolbar import DebugToolbarExtension
-
 from models import db, connect_db, Product, Profile, Routine, RoutineStep
 from forms import ProfileForm, RoutineForm, ProductForm
+
+import requests
 
 app = Flask(__name__)
 
@@ -16,12 +16,26 @@ db.create_all()
 
 toolbar = DebugToolbarExtension(app)
 
-
 @app.route("/")
 def root():
     """Render homepage."""
     
     return render_template("index.html")
+
+
+@app.route("/API", methods=["GET", "POST"])
+def call_API():
+
+    form = ProductForm()
+    if form.validate_on_submit():
+        search_term = form.search_term.data
+
+    my_headers = {'Authorization' : 'Bearer {access_token}'}
+    response = requests.get("https://api.sandbox.ebay.com/buy/browse/v1/item_summary/methods/search?", headers=my_headers, params={"q": "facewash"})
+    print(response.json())
+
+    return("/")
+
 
 @app.route("/profile", methods=["GET", "POST"])
 def add_profile():
@@ -52,6 +66,7 @@ def add_routine():
 def add_product():
 
     form = ProductForm()
+
 
     return render_template("product_form.html", form=form)
 

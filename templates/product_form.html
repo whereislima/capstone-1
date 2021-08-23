@@ -7,10 +7,23 @@
 <body>
   <section>
   Search for product 
- <form  id="product-search">
-   <input type="text" name="product">
-   <input type="submit" value="search">
- </form>
+  <form method="POST">
+    {{ form.hidden_tag() }}
+    {% for field in form if field.widget.input_type != 'hidden'%}
+    <p>
+      {{field.label}}
+      {{field}}
+
+      {% for err in field.errors %}
+      {{err}}
+      {% endfor %}
+    </p>
+    {% endfor %}
+    <a href="/API" method="GET">
+      <button>Submit</button>
+    </a>
+  </form>
+
 </section>
 
  <section>

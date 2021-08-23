@@ -1,28 +1,28 @@
 "use strict";
 
 const BASE_API = "https://api.sandbox.ebay.com/buy/browse/v1/item_summary/methods/search?q=";
-const token = "v^1.1#i^1#f^0#p^1#I^3#r^0#t^H4sIAAAAAAAAAOVYe2wURRi/6wsKFMIbTTWXlRABd28f99xwh3ctpUdaWrgWzyLW2d3Z69K93cvOrO2FILXRaoyEBANGkKQx0aR/KJHEKGJFE0z0HzVKRCoQEyVClJAYUxE0ce56lGslpbRnbOLmksvMfM/ffPN93wzbU1G5pq++7/cq56yS/h62p8Tp5OaylRXla+eXltxb7mALCJz9PSt7ynpLL61DIKWnxa0QpU0DQVd3SjeQmJsMUbZliCZAGhINkIJIxLIYjzQ2iDzDimnLxKZs6pQrVhuiApwq8BBIwM+DQEDykFnjpswWM0T5PT5e8qpSkJUVLyfxZB0hG8YMhIGBQxTP8hzN+mnO28LyIk9+HkbgfG2Uaxu0kGYahIRhqXDOXDHHaxXYOrGpACFoYSKECscidfGmSKx2w+aWde4CWeE8DnEMsI3GjmpMBbq2Ad2GE6tBOWoxbssyRIhyh0c0jBUqRm4aMwXzc1D7Bb/fJ8EgAILPE+TUokBZZ1opgCe2IzujKbSaIxWhgTWcuROiBA1pJ5RxfrSZiIjVurJ/W2yga6oGrRC1IRp5NNLcTIUbtEZAJ01TQZ2aQcejCToQ8PgEmeNYmgtKXp+kCnklI5LyEI/TUmMaipYFDLk2mzgKicVwPC5cAS6EqMlosiIqzlpTSOcZxU9oy27oyA7auMPI7ilMERBcueGd0R/lxtjSJBvDUQnjF3LwhCiQTmsKNX4xF4f50OlGIaoD47Todnd1dTFdAmNaSTfPspw70dgQlztgClB52uxZ70banRloLeeKDAkn0kScSRNbukmcEgOMJBUWfAEf58njPtas8PjZf0wU+OweexqKdToEOSizASAEBB+QAkApxukI5wPUnbUDSiBDp4DVCXFaBzKkZRJndgpamiIKXpUXAiqkFV9QpT1BVaUlr+KjORVCFkJJkoOB/8shmWyYx6FsQVy0OC9KjCdREDc0dCWauPhGpS6Z6KiDPoFraE3Gos3R+ubmxkTSbIoLnNWWDE32JNzW+RpdI8i0EP3FBCB71qcPQr2JMFSm5V5cNtOw2dQ1OTOzNliwlGZg4UzUzpBxHOo6+ZuWq5F0Ola8bF0UJ+8iUUzN5+JWqP+gOt3WK5QN2pnlVZYfEQEgrTHZ+sPIZsptAtJ4uLNnnUy356x2TUA4SuSW7AyTtCHCxBKF9H6TZtJIImdIKVMmzzJSKIkTk2chFwvFlvGUFOUqMkPQ1JIdGN2Vzu7pgCLZeue0gk4jF4YZFXLE3RG/NWWk02dyzjPoSZmxIDJti1xymKZs89tidkKDtBPYMnUdWtu4aSfSVMrGQNLhTMuoRcguGph6r1PW63z/X/GL8/Gkv/H6PdPzTc51M+0zrSYUsw7exX3GPfZlJezIfVyvc5DtdR4vcTpZP9G/ll1dUdpaVjqPQiSTMAgYimR2MxpQGZLEDIBtCzKdMJMGmlVS4dSGTsvXCt50+newK0ZfdSpLubkFTzxs9a2Vcm7B8iqeY/2cl+XJ52ljH7i1WsYtK1uiXbr+lzXY2vHZ81/uOD3Atw8P/Olgq0aJnM5yBwlAh/nTUOWV67jtqqNp3/rFn99/4sIzP/iHnvhN37jplX0hu+a9Dd+fuoyG245dePDgh4e3Xzv7QnX9Hn2g9jX6xJJu9N2RtxadOjuYPP9JzaeNZcOzuoa/nTP7uZVfXeYOvN0zzG1/es+BVbv36Q5H9NzqPamXv76aXnpjRRDtGqo65T15cdPOvnfCy5fNX7D/xTPqHMfueT/ec8B8YXBX4iBv/bymum3nu3WLqxdXNAw8Ej35zUfB2FOLLv5xfK/9qv2LunfrB/a5w5z48bKlCx+/+uazW4/Erjhay9bPXlC70J24kZjfHi05e6gl5tjdeeilLQ9v3HKm8fT+o7+ueoM+tv38QPVDj31xX1//60fDLSPb+DedPsUnbRMAAA=="
+const token = "v^1.1#i^1#I^3#f^0#p^1#r^0#t^H4sIAAAAAAAAAOVYf2wTVRxf9wsmG4giIkFSDwQH9u7dXdu1J610sLmZ/Sh0zDF/kPvxrjt2vav33rlVRCYuiKCRxCghREMQQwjqHyYaMTGCEEET0OhikJgoiUSUQCKCLCai79ptdJOMQatZYpPm8t77/vy874/3HugpLVuwoW7DpQrXhMIdPaCn0OViJ4Gy0pKFk4sKZ5YUgCwC146euT3F64tOL0JiQk8KyyFKmgaC7u6EbiAhPRmibMsQTBFpSDDEBEQCloVYpLFB4GggJC0Tm7KpU+76pSHKL3lVr+gPBgEPfCrrI7PGoMwWM0Spfgg5vgoEoALEgLOMkA3rDYRFA4coDnCsBwQ8HNsCOMEbEHwczQJfO+VuhRbSTIOQ0IAKp60V0rxWlqmjWyoiBC1MhFDh+khtrDlSv7SmqWURkyUrPABDDIvYRsNHS0wFultF3Yajq0FpaiFmyzJEiGLCGQ3DhQqRQWNuwPwM0lVeVfFVyTwXhDIns3mBsta0EiIe3Q5nRlM8appUgAbWcOpaiBI0pNVQxgOjJiKifqnb+SyzRV1TNWiFqJrqyMpINEqFG7RG0RM3TQV1aoYnVt3mCQS8fl5mWeBhg5LPL6n8gJKMpAGIR2hZYhqK5gCG3E0mrobEYjgSFz4LF0LUbDRbERU71mTTeYfwY9udDc3soI07DGdPYYKA4E4Pr43+EDfGlibZGA5JGLmQhidEicmkplAjF9NxOBA63ShEdWCcFBimq6uL7uJp04ozHAAs09bYEJM7YEKkBmmdXEfatRk8WtoVGRJOpAk4lSS2dJM4JQYYcSrM+wN+1juA+3CzwiNn/zGR5TMzPBvylR1VVdAnBRSvrPoA9PKBfGRHeCBAGccOKIkpT0K0OiFO6qIMPTKJMzsBLU0ReJ/K8QEVehR/UPV4g6rqkXyK38OqEAIIJUkOBv4vSTLWMI9B2YI4f3GejxiPoyBuaOhqa2ZjDyi18baOWujn2YYV8frqaHVdNNrYFjebYzxrtcdDY82Eqzq/RNcIMi1Ef14BcHI9ZxDqTIShkpN7MdlMwqipa3JqfG0wbylR0cKpajtFxjGo6+STk6uRZLI+j9U6H05eR6G4MZ/z3KH+++50Va+QE7TjyyuHHxEBYlKjnf5Dy2aCMUVy8GBEJ9eT2qq01e7RCAeJGMlO0XEbIkwsUcjZb8xMGinkNGllythZMo2SODF2FnKvUGwZ35CidEemCZpavAOj69LZnQsokq135hR0GrkwjKuQI+5m/NaUzEmfTjtPoydk2oLItC1yyaGbncNvi9kJDXKcwJap69BqZXMupImEjUVJh+OtouahumhiDmed4vWuff+GX6yfC/pYL8tzOfkmp08zq8ZbT8hnH7yO+wwz/GElXJD+setdHwGyjYUuF6gi+heCytKiFcVF5RQilYRGoqFIZjetiSpNipghYtuCdCdMJUXNKix1aSf65P6sJ50dj4IZQ486ZUXspKwXHjDrykoJO+X2Co4FAfLnvAEf1w7mXFktZqcXT3txf+n5QveM3vePXjxL7enecpaRtoGKISKXq6SAxF/BTZs6p535OtZ6D5jS17E7FFx388FDTfbDaxbXvHxu5tEv1h8C9tnZ3zynPcuYDTtXbizf/N1+eOHSZ8dObI/3bWDu3yvMDn9Qsr3l8QcLSyte3/nr6t6Ot/rvrpxwevLbB8r3aVM/WSmUbYp8dWvNgstbJ83q+/Mh/ZXoD8Id358s+Yl6cvGMO+fNPL9u4rd1nR8i1PTbkeN/7d3Vd2/lp7VPzZ+zZf66Ccv77rrv0IHfhWrp8sTS8hXs4breAnljz7JbGn9+7flYqv+l1mds7tThc73v+i6+8MjGP7bOq9win/i4veZVfGHr2i/f+fy9M3ue3jVxzu5T29gpmx47tmbqbQcXr+3/8Y031c3TfzlunjwyN7ONfwMLoqm+bBMAAA=="
 
-async function searchProduct() {
-  console.log('reached searchProduct function')
-  const response = await axios({
-    url: `${BASE_API}facewash`,
-    method: "GET",
-    headers: { 'Authorization' : `Bearer ${token}` }
-  })
+// async function searchProduct() {
+//   console.log('reached searchProduct function')
+//   const response = await axios({
+//     url: `${BASE_API}facewash`,
+//     method: "GET",
+//     headers: { 'Authorization' : `Bearer ${token}` }
+//   })
   
-  console.log(response)
-}
+//   console.log(response)
+// }
 
-const productForm = document.querySelector('#product-search');
-const input = document.querySelector('input[name="product"]');
+// const productForm = document.querySelector('#product-search');
+// const input = document.querySelector('input[name="product"]');
 
 
-productForm.addEventListener('submit', async function(evt){
-  evt.preventDefault();
+// productForm.addEventListener('submit', async function(evt){
+//   evt.preventDefault();
 
-  console.log('product form button clicked')
+//   console.log('product form button clicked')
 
-  await searchProduct();
-})
+//   await searchProduct();
+// })
 

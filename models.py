@@ -23,7 +23,7 @@ class Routine(db.Model):
     name = db.Column(db.Text)
     time_of_day = db.Column(db.Text, nullable=False)
    
-    products = db.relationship("Product", secondary="routine_steps", backref="products")
+    products = db.relationship("Product", secondary="routine_steps", backref="routines")
 
 class Product(db.Model):
   
