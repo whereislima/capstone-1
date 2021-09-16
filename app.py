@@ -16,10 +16,11 @@ db.create_all()
 
 toolbar = DebugToolbarExtension(app)
 
+
 @app.route("/")
 def root():
     """Render homepage."""
-    
+
     return render_template("index.html")
 
 
@@ -30,9 +31,19 @@ def call_API():
     if form.validate_on_submit():
         search_term = form.search_term.data
 
-    my_headers = {'Authorization' : 'Bearer {access_token}'}
-    response = requests.get("https://api.sandbox.ebay.com/buy/browse/v1/item_summary/methods/search?", headers=my_headers, params={"q": "facewash"})
-    print(response.json())
+
+    url = "https://sephora.p.rapidapi.com/auto-complete"
+
+    querystring = {"q": "serums"}
+
+    headers = {
+        'x-rapidapi-host': "sephora.p.rapidapi.com",
+        'x-rapidapi-key': "4aff8a97ccmsh04b89d869aa3d1ap1fbf25jsn746679575818"
+    }
+
+    response = requests.request("GET", url, headers=headers, params=querystring)
+
+    print(response.text)
 
     return("/")
 
@@ -46,8 +57,9 @@ def add_profile():
         skin_type = form.skin_type.data
         skin_concerns = form.skin_concerns.data
 
-        profile = Profile(age_range=age_range, skin_type=skin_type, skin_concerns=skin_concerns)
-        
+        profile = Profile(age_range=age_range,
+                          skin_type=skin_type, skin_concerns=skin_concerns)
+
         db.session.add(profile)
         db.session.commit()
 
@@ -55,19 +67,35 @@ def add_profile():
     else:
         return render_template("profile_form.html", form=form)
 
+
 @app.route("/routine", methods=["GET", "POST"])
 def add_routine():
     form = RoutineForm()
 
     return render_template("routine_form.html", form=form)
 
-
 @app.route("/product", methods=["GET", "POST"])
 def add_product():
 
     form = ProductForm()
+    if form.validate_on_submit():
+        search_term = form.search_term.data
 
+        url = "https://sephora.p.rapidapi.com/auto-complete" 
+
+        querystring = {"q": search_term}
+
+        headers = {
+            'x-rapidapi-host': "sephora.p.rapidapi.com",
+            'x-rapidapi-key': "4aff8a97ccmsh04b89d869aa3d1ap1fbf25jsn746679575818"
+        }
+
+        response = requests.request("GET", url, headers=headers, params=querystring)
+
+        # print(response.text)
+        jsonResp = response.json()
+        print(jsonResp)
+        for key, value in jsonResp.items():
+            print(key, ":", value)
 
     return render_template("product_form.html", form=form)
-
-
