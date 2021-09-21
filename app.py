@@ -96,6 +96,14 @@ def add_product():
         jsonResp = response.json()
         print(jsonResp)
         for key, value in jsonResp.items():
-            print(key, ":", value)
+            print(key)
+            print(value)
+            for term in value:
+                print(term)
+                for thing in term:
+                    print(thing)
+               
+           
+            
 
     return render_template("product_form.html", form=form)
