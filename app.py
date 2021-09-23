@@ -94,16 +94,15 @@ def add_product():
 
         # print(response.text)
         jsonResp = response.json()
-        print(jsonResp)
-        for key, value in jsonResp.items():
-            print(key)
-            print(value)
-            for term in value:
-                print(term)
-                for thing in term:
-                    print(thing)
-               
-           
-            
+        # print(jsonResp['typeAheadTerms'])
+        products = [x for x in jsonResp['typeAheadTerms'] if 'productName' in x.keys()]
+        # print(products)
 
-    return render_template("product_form.html", form=form)
+        product_name = []
+        for thing in products:
+            print(thing['productName'])
+            product_name.append(thing['productName'])
+        
+    return render_template("product_form.html", form=form, product_name=product_name)
+
+    

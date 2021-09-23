@@ -20,19 +20,25 @@
     </p>
     {% endfor %}
     <a href="/API" method="GET">
-      <button>Submit</button>
+      <input type="submit">
     </a>
   </form>
 
 </section>
 
  <section>
+   <form action="">
 Products to add to routine
   <ul id="products">
 
-    
+    {% for product in product_name %}
+    <input type="checkbox">
+    <label for="">{{product}}</label> <br>
+    {% endfor %}
     
   </ul>
+  <input type="submit">
+</form>
 </section>
 
   
