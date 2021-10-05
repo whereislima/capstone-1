@@ -24,24 +24,22 @@
     </a>
   </form>
 
-</section>
+</section>  
 
- <section>
-   <form action="">
-Products to add to routine
-  <ul id="products">
+<section>
+  <form action="">
+Products to add to database
+ <ul id="products">
 
-    {% for product in product_name %}
-    <input type="checkbox">
-    <label for="">{{product}}</label> <br>
-    {% endfor %}
-    
-  </ul>
-  <input type="submit">
+   {% for product in product_name %}
+   <li><label for="">{{product}}</label></li>
+  
+   {% endfor %}
+   
+ </ul>
+ 
 </form>
 </section>
-
-  
 
 </body>
 

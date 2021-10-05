@@ -14,7 +14,7 @@ app.config['SECRET_KEY'] = "puri-puri"
 connect_db(app)
 db.create_all()
 
-toolbar = DebugToolbarExtension(app)
+# toolbar = DebugToolbarExtension(app)
 
 
 @app.route("/")
@@ -72,10 +72,10 @@ def add_profile():
 def add_routine():
     form = RoutineForm()
 
-    return render_template("routine_form.html", form=form)
+    return render_template("new_routine_form.html", form=form)
 
 @app.route("/product", methods=["GET", "POST"])
-def add_product():
+def find_product():
 
     form = ProductForm()
     if form.validate_on_submit():
@@ -102,7 +102,18 @@ def add_product():
         for thing in products:
             print(thing['productName'])
             product_name.append(thing['productName'])
-        
-    return render_template("product_form.html", form=form, product_name=product_name)
+
+        for product in product_name:
+            db.session.add(product)
+            db.session.commit()
+
+        return render_template("new_product_form.html", form=form, product_name=product_name)
+
+    return render_template("new_product_form.html", form=form)
+
+
+
+
+
 
     
