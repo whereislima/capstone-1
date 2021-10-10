@@ -6,40 +6,46 @@
 
 <body>
   <section>
-  Search for product 
-  <form method="POST">
-    {{ form.hidden_tag() }}
-    {% for field in form if field.widget.input_type != 'hidden'%}
-    <p>
-      {{field.label}}
-      {{field}}
+    Search for product
+    <form method="POST">
+      {{ form.hidden_tag() }}
+      {% for field in form if field.widget.input_type != 'hidden'%}
+      <p>
+        {{field.label}}
+        {{field}}
 
-      {% for err in field.errors %}
-      {{err}}
+        {% for err in field.errors %}
+        {{err}}
+        {% endfor %}
+      </p>
       {% endfor %}
-    </p>
-    {% endfor %}
-    <a href="/API" method="GET">
-      <input type="submit">
-    </a>
-  </form>
+      <a href="/API" method="GET">
+        <input type="submit">
+      </a>
+    </form>
 
-</section>  
+  </section>
 
-<section>
-  <form action="">
-Products to add to database
- <ul id="products">
+  <section>
 
-   {% for product in product_name %}
-   <li><label for="">{{product}}</label></li>
-  
-   {% endfor %}
-   
- </ul>
- 
-</form>
-</section>
+    <h3>Products to add to routine</h3>
+
+    <form action="">
+
+      <ul id="products" style="list-style-type:none;">
+        {% for product in product_name %}
+        <li>
+          <input type="checkbox" name="" id="">
+          <label for="">{{product}}</label>
+        </li>
+        {% endfor %}
+      </ul>
+
+    
+    </form>
+
+  </section>
+
 
 </body>
 

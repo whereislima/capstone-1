@@ -103,10 +103,6 @@ def find_product():
             print(thing['productName'])
             product_name.append(thing['productName'])
 
-        for product in product_name:
-            db.session.add(product)
-            db.session.commit()
-
         return render_template("new_product_form.html", form=form, product_name=product_name)
 
     return render_template("new_product_form.html", form=form)
