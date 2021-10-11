@@ -40,6 +40,20 @@
   </form>
 
 
+products for routine
+
+<form action="">
+  <ul>
+    {{key}}
+    {% for product in products_for_routine %}
+    <li draggable="true">
+      {{product}}
+    </li>
+    {% endfor %}
+  </ul>
+</form>
+
+
 </body>
 
 {% endblock %}

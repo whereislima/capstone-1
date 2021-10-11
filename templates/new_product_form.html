@@ -6,7 +6,7 @@
 
 <body>
   <section>
-    Search for product
+   <h3> Search for a product </h3>
     <form method="POST">
       {{ form.hidden_tag() }}
       {% for field in form if field.widget.input_type != 'hidden'%}
@@ -28,21 +28,27 @@
 
   <section>
 
-    <h3>Products to add to routine</h3>
+    <h3>Choose products to add to routine</h3>
 
-    <form action="">
+    <form action="/add-product">
 
       <ul id="products" style="list-style-type:none;">
         {% for product in product_name %}
         <li>
-          <input type="checkbox" name="" id="">
+          <input type="checkbox" name="{{product}}">
           <label for="">{{product}}</label>
         </li>
         {% endfor %}
       </ul>
+      <button type="submit">Add products</button>
 
     
     </form>
+
+    <a href="/routine">
+      <button>Ready to create a routine</button>
+    </a>
+
 
   </section>
 

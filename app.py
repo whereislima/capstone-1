@@ -109,7 +109,16 @@ def find_product():
 
 
 
+@app.route("/add-product", methods=["GET","POST"])
+def add_product():
 
+   
+    form = ProductForm()
+    if form.validate_on_submit():
+        search_term = form.search_term.data
 
+        key = search_term
 
+        return render_template("new_routine_form.html", form=form, key=key)
+    return render_template("new_product_form.html", form=form)
     
